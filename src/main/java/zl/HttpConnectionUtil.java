@@ -29,6 +29,12 @@ public class HttpConnectionUtil {
 
 	// utf-8字符编码
 	public static final String CHARSET_UTF_8 = "utf-8";
+	
+	// HTTP内容类型。相当于form表单的形式提交数据
+	public static final String CONTENT_TYPE_FORM_URL = "application/x-www-form-urlencoded";
+	
+	// HTTP内容类型。相当于json的形式提交数据
+	public static final String CONTENT_TYPE__JSON = "application/json";
 
 	// 请求超时时间,默认50s
 	public static final int requestTimeout = 5000000;
@@ -36,7 +42,15 @@ public class HttpConnectionUtil {
 	// 连接超时时间,默认10s
 	public static final int timeout = 1000000;
 
-	public static String RequestMethod(String method, String urlStr, String args) {
+	/**
+	 * 发送request请求
+	 * @param method 请求方式
+	 * @param urlStr 请求地址
+	 * @param args 请求参数
+	 * @param contentType http内容类型
+	 * @return 返回的response
+	 */
+	public static String RequestMethod(String method, String urlStr, String args, String contentType) {
 		// 是否有http正文提交
 		boolean isDoInput = false;
 		if (method.toUpperCase().equals(METHOD_POST) && args != null && !args.isEmpty()) {
@@ -77,7 +91,7 @@ public class HttpConnectionUtil {
 			// 设置字符编码
 			httpURLConnection.setRequestProperty("Accept-Charset", CHARSET_UTF_8);
 			// 设置内容类型
-			httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			httpURLConnection.setRequestProperty("Content-Type", contentType);
 			// 设定请求的方法，默认是GET
 			httpURLConnection.setRequestMethod(method);
 			// 打开到此 URL 引用的资源的通信链接（如果尚未建立这样的连接）。
