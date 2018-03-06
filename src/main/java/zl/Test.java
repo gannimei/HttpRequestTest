@@ -17,19 +17,18 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		OptionEditModel[] optionArray = new OptionEditModel[6];
+		ProPriceArrayEditModel[] proPriceArray = new ProPriceArrayEditModel[6];
 		for(int i = 0; i < 6; i++) {
-			optionArray[i] = new OptionEditModel();
-			optionArray[i].setCategorySystemCode("Cat0" + i);
-			optionArray[i].setOptionSystemCode("Opt0" + i);
-			
+			proPriceArray[i] = new ProPriceArrayEditModel();
+			proPriceArray[i].setItemcode("Cat0" + i);
+			proPriceArray[i].setProditemcode("Opt0" + i);
 		}
-		PriceEditModel model = new PriceEditModel();
+		ProdPriceEditModel model = new ProdPriceEditModel();
 		model.setCustomerID("izdigital");
-		model.setPriceArray(optionArray);
+		model.setPriceArray(proPriceArray);
 		//JSONObject json = (JSONObject)JSONObject.toJSON(model);
 		//System.out.println(JSONObject.toJSONString(model));
-		System.out.println(HttpConnectionUtil.RequestMethod(HttpConnectionUtil.METHOD_POST, "http://www.tcprogrammer.com/L5_Configurator/api/test", JSONObject.toJSONString(model), HttpConnectionUtil.CONTENT_TYPE__JSON));
+		System.out.println(HttpConnectionUtil.RequestMethod(HttpConnectionUtil.METHOD_POST, "http://localhost:8080/L5_Configurator/api/priceRequest", JSONObject.toJSONString(model), HttpConnectionUtil.CONTENT_TYPE__JSON));
 	}
 
 }
