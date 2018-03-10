@@ -8,7 +8,7 @@ public class ProdPriceEditModel {
 	
 	private ProPriceArrayEditModel[] PriceArray;
 
-	@JSONField(name = "CustomerID")
+	@JSONField(name = "CustomCode")
 	public String getCustomerID() {
 		return CustomerID;
 	}

@@ -14,7 +14,7 @@ public class PriceEditModel {
 	private String CustomerID;
 	private OptionEditModel[] PriceArray;
 
-	@JSONField(name = "CustomerID")
+	@JSONField(name = "CustomCode")
 	public String getCustomerID() {
 		return CustomerID;
 	}
